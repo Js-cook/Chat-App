@@ -32,5 +32,7 @@ def create_message(request):
   return Response(serializer.data)
 
 @api_view(["DELETE"])
-def delete_message(request):
-  pass
+def delete_message(request, pk):
+  message = Message.objects.get(id=pk)
+  message.delete()
+  return Response("Message removed")
