@@ -37,7 +37,7 @@
     var day = date.getDate()
     var month = date.getMonth()+1
     var year = date.getFullYear()
-    return(`${year}-${month}-${date}`)
+    return(`${year}-${month}-${day}`)
   }
   function getTime(){
     var today = new Date()
@@ -48,10 +48,11 @@
   }
   var csrftoken = getCookie('csrftoken');
 
-      rendermessages()
+      renderMessages()
 
-      function rendermessages(){
+      function renderMessages(){
         var wrapper = document.getElementById("message-list")
+        wrapper.innerHTML = ""
         var url = "https://chat.jacobcook4.repl.co/api/messages_list/"
         fetch(url)
         .then((resp) => resp.json())
@@ -62,24 +63,26 @@
             wrapper.innerHTML += message 
           }
         })
-        
+        setTimeout(renderMessages, 5000)
       }
       var form = document.getElementById("form-wrapper")
       form.addEventListener("submit", function(e){
         e.preventDefault()
         var date = getDate()
         var time = getTime()
+        // alert(date)
+        // alert(JSON.stringify({"text":message, "date":date, "time":time}))
         // alert("form submitted")
         var url = "https://chat.jacobcook4.repl.co/api/message_create/"
         var message = document.getElementById("title").value
-        alert(message)
+        // alert(message)
         fetch(url, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
             "X-CSRFToken": csrftoken
           },
-          body:JSON.stringify({"text":message, "date":date, "time":time})
+          body: JSON.stringify({"text":message, "date":date, "time":time})
         }).then(function(response){
           rendermessages()
           document.getElementById("form").reset()

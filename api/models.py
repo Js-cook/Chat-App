@@ -4,7 +4,7 @@ from django.db import models
 class Message(models.Model):
   date = models.DateField()
   time = models.TimeField()
-  text = models.CharField(max_length=200)
+  text = models.CharField(max_length=900)
 
   def __str__(self):
     return self.text
