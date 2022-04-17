@@ -2,10 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/frontend/styles.css">
     <title>Chat</title>
   </head>
-  <body>
-<!--     <h1>Hello web</h1> -->
+  <body class="light">
+<!--     <div id="theme" class="light"> -->
+    <div>
+      <button onclick="changeTheme()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+        </svg>
+      </button>
+    </div>
+    <script type="text/javascript">
+      function changeTheme(){
+        // var div = document.getElementById("theme")
+        var body = document.getElementsByTagName("body")[0]
+        if (body.className == "light") {
+          body.className = "dark"
+        }
+        else {
+          body.className = "light"
+        }
+      }
+    </script>
     <div id="form-wrapper">
       <form id="form">
         <input id="title" type="text" name="message" placeholder="send a message">
@@ -15,6 +35,7 @@
     <div id="message-list">
       
     </div>
+<!--     </div> -->
     
     <script type="text/javascript">
       function getCookie(name) {
@@ -60,7 +81,13 @@
           var list = data
           for (var i in list) {
            // posts.push(list[i]) 
-           var message = `<span class="message">${list[i].text}</span><br>`
+           // var message = `<span class="message">${list[i].text}</span><br>`
+            var message = `
+            <div>
+              <h4 class="message">${list[i].sender}: ${list[i].text}</h4>
+              <p>${list[i].date} ${list[i].time}</p>
+            </div>
+            `
             wrapper.innerHTML += message 
           }
         })

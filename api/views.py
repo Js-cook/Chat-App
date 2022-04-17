@@ -26,7 +26,10 @@ def api_list(request):
 
 @api_view(["POST"])
 def create_message(request):
-  serializer = MessageSerializer(data=request.data)
+  data = request.data
+  sender = request.user
+  data["sender"] = sender.username
+  serializer = MessageSerializer(data=data)
   if serializer.is_valid():
     serializer.save()
   return Response(serializer.data)
