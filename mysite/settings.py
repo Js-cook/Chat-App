@@ -123,3 +123,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
+
+LOGIN_REDIRECT_URL = "/"
