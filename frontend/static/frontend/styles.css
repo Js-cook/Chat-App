@@ -1,10 +1,16 @@
 .light {
+  transition-property: background-color color;
+  transition-duration: 1000ms;
+  transition-delay: 500ms;
   background-color: white;
   color: black;
   width: 100%;
   height: 100%;
 }
 .dark {
+  transition-property: background-color color;
+  transition-duration: 1000ms;
+  transition-delay: 500ms;
   background-color: black;
   color: white;
   width: 100%;
