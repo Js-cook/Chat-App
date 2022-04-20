@@ -1,7 +1,7 @@
 .light {
   transition-property: background-color color;
-  transition-duration: 1000ms;
-  transition-delay: 500ms;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
   background-color: white;
   color: black;
   width: 100%;
@@ -9,10 +9,24 @@
 }
 .dark {
   transition-property: background-color color;
-  transition-duration: 1000ms;
-  transition-delay: 500ms;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
   background-color: black;
   color: white;
   width: 100%;
   height: 100%;
+}
+.navbar-dark {
+  transition-property: background-color color;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
+}
+.navbar-light {
+  transition-property: background-color color;
+  transition-duration: 500ms;
+  transition-delay: 100ms;
+}
+#form-wrapper {
+  padding-bottom: 2rem !important;
+/*   border: 2px solid grey; */
 }
